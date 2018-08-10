@@ -2,7 +2,6 @@
 
 namespace Jackross\Strategy\Operations;
 
-
 class Division implements IOperation
 {
 

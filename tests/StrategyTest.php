@@ -1,4 +1,5 @@
 <?php
+
 use Jackross\Strategy\Context;
 
 class StrategyTest extends \PHPUnit\Framework\TestCase

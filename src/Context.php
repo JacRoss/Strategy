@@ -33,7 +33,7 @@ class Context
     private function getStrategy(string $operation): IOperation
     {
         if (!isset($this->strategies[$operation])) {
-            throw new \InvalidArgumentException();
+            throw new \InvalidArgumentException(sprintf('operation [%s] not support', $operation));
         }
 
         return new $this->strategies[$operation]();

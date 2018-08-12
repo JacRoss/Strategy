@@ -5,6 +5,11 @@ namespace Jackross\Strategy\Operations;
 class Division implements IOperation
 {
 
+    public static function operationKey(): string
+    {
+        return '/';
+    }
+
     /**
      * @param int $a
      * @param int $b

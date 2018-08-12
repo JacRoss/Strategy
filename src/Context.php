@@ -19,10 +19,10 @@ class Context
 {
     private $strategy;
     private $strategies = [
-        '+' => Addition::class,
-        '-' => Subtraction::class,
-        '*' => Multiplication::class,
-        '/' => Division::class
+        Addition::class,
+        Subtraction::class,
+        Multiplication::class,
+        Division::class
     ];
 
     public function __construct(string $operation)
@@ -32,11 +32,19 @@ class Context
 
     private function getStrategy(string $operation): IOperation
     {
-        if (!isset($this->strategies[$operation])) {
-            throw new \InvalidArgumentException(sprintf('operation [%s] not support', $operation));
+        $strategyClassName = $this->findStrategy($operation);
+        return new $strategyClassName();
+    }
+
+    private function findStrategy(string $operation): string
+    {
+        foreach ($this->strategies as $value) {
+            if ($value::operationKey() === $operation) {
+                return $value;
+            }
         }
 
-        return new $this->strategies[$operation]();
+        throw new \InvalidArgumentException(sprintf('operation [%s] not support', $operation));
     }
 
     public function calculate(int $a, int $b): int

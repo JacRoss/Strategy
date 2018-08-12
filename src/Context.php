@@ -22,7 +22,7 @@ class Context
         Addition::class,
         Subtraction::class,
         Multiplication::class,
-        Division::class
+        Division::class,
     ];
 
     public function __construct(string $operation)
